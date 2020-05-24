@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      ul,
+      ol {
+        list-style: none;
+      }
+      img {
+        max-width: 100%;
+      }
+      .clearfix:after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+      .logo {
+        background: grey;
+        display: inline-block;
+        float: left;
+        margin-top: 8px;
+        margin-left: 10px;
+      }
+      /* 这里的display: inline-block;把背景灰色缩到红色框框中 */
+      .logo > img {
+        height: 26px;
+        vertical-align: top;
+      }
+      /* 这里的26可以用右键检查里面查看图片的像素后，给个整数 */
+      /* 这里用vertical-align:top；（vat+tab）可以去掉下面灰色多出红色框框的那个一点的背景色，
+      如果发现图片下面有多余的东西，比如颜色或者其他东西，可以用vertiacal-align:top或者用middle都可以的 */
+      .nav {
+        float: left;
+        margin-left: 20px;
+      }
+      ul > li {
+        float: left;
+        padding: 4px 0.5em;
+        line-height: 32px;
+      }
+      /* line-height:32px,是文字的高度 */
+      /* 这里文字的高度为42，因为加个padding和borderd进去。因为文字高度为42，图片高度为26，所以两个高度总和为68，除以2，是34，
+      图片26跟34差8个像素，所以logo处写个margin-top:8px */
+      ul {
+        display: inline-block;
+      }
+      /* 这里不加display: inline-block;的话，绿色的框会一直延伸到页面最后去,inline-block有使劲压缩的意思，这里可以用d:ib+tab表示 */
+      header {
+        background: grey;
+        color: white;
+      }
+      .content {
+        outline: 1px solid red;
+        width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      /* 这里的outline是不占空间的，相当于是border，因为如果用了border的话，要加上2px，就对不上数值了 */
+      /* 这里用margin-left:auto 和 margin-right:auto 比用margin:0 auto的好，因为如果一旦上面写了margin-top：10的话，后面这个会把这个覆盖了 */
+      .content > aside {
+        width: 200px;
+        outline: 1px solid green;
+        height: 300px;
+        float: left;
+      }
+      /* 这里的190px是淘宝惯用左边的宽度，高度如果没事，不要随便给高度 */
+      .content > main {
+        width: 500px;
+        height: 300px;
+        outline: 1px solid purple;
+        float: left;
+      }
+      .content > .ad {
+        height: 300px;
+        width: 100px;
+        outline: 1px solid black;
+        float: left;
+      }
+      .imageList {
+        outline: 1px solid purple;
+        width: 800px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 10px;
+      }
+      /* 这里的margin-top：10是外面的10像素，所以不会被合并，如果放在下面的，会被合并，变成空间空了20像素，
+      如果是float的元素，外边距是不会被合并的 */
+      .imageList > .x > .image {
+        outline: 1px solid green;
+        width: 191px;
+        height: 191px;
+        background: black;
+        float: left;
+        margin-bottom: 10px;
+        margin-right: 12px;
+      }
+      /* 这里的191是通过计算出来的，假设4个边框为x图片，中间就是3个y的空隙，所以4x+3y=800，推算出x=191,y=12 */
+      .x {
+        margin-right: -12px;
+      }
+      如果要做平均布局，需要在布局中间加个X图层，X图层多余右边距是个负，每个值就是一个负的Y值
+    </style>
+  </head>
+  <body>
+    <header class="clearfix">
+      <div class="logo">
+        <img
+          src="https://static.xiedaimala.com/xdml/cdn/assets/white-logo-1a762b425df663fbccee710fe08d66951cea2fbc0a0350f03446ab30462e739f.png"
+          alt=""
+        />
+      </div>
+      <ul class="clearfix nav">
+        <li>首页</li>
+        <li>课程</li>
+        <li>优惠</li>
+        <li>关于</li>
+      </ul>
+    </header>
+
+    <div class="content clearfix">
+      <aside>一行有六个字</aside>
+      <main></main>
+      <div class="ad"></div>
+    </div>
+    <!-- aside是边栏的意思，就是旁边的意思，main是主要内容区域，ad是广告的意思 -->
+
+    <div class="imageList">
+      <div class="x clearfix">
+        <div class="image"></div>
+        <div class="image"></div>
+        <div class="image"></div>
+        <div class="image"></div>
+        <div class="image"></div>
+        <div class="image"></div>
+        <div class="image"></div>
+        <div class="image"></div>
+      </div>
+    </div>
+  </body>
+</html>
